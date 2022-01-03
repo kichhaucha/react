@@ -1,16 +1,16 @@
 
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Textedit from "./components/Textedit";
 import React, { useState } from 'react'
 import Myalert from "./components/Myalert";
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
 
-// } from "react-router-dom"
+} from "react-router-dom"
 
 
 function App() {
@@ -43,13 +43,24 @@ function App() {
   }
   return (
   <>
+   <Router>
 <Navbar my="TextUtils" txt="About"  mode={mode} toggle={toggle}/>
 <Myalert  alert={alert}         />
 <div className="container my-5">
 
+<Switch>
+          <Route path="/about">
+            <About mode={mode} />
+          </Route>
+          <Route path="/">
 <Textedit text="below text area "  header="Enter the text to analyze below"   showalert={showalert}/>
-    </div>        
+          
+          </Route>
+          
+        </Switch>
+  </div>        
 {/* <About  /> */}
+</Router>
 </>
   );
 }
